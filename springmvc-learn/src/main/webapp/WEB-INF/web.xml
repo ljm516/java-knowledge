@@ -8,7 +8,7 @@
     <!--非springmvc的配置形式-->
   <!--<servlet>-->
     <!--<servlet-name>whatIsServlet</servlet-name>-->
-    <!--<servlet-class>top.ljming.springmvc.learn.servletDetail.WhatIsServlet</servlet-class>-->
+    <!--<servlet-class>top.ljming.springmvc.learn.mvc.component.ServletDetail</servlet-class>-->
     <!--<init-param>-->
       <!--<param-name>hello</param-name>-->
       <!--<param-value>world</param-value>-->

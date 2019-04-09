@@ -7,7 +7,7 @@ import top.ljming.springmvc.learn.policy.service.LocationService;
  *
  * @author lijm
  */
-public class LocationDiffServiceImple implements LocationService {
+public class LocationDiffServiceImpl implements LocationService {
     @Override
     public void execute() {
 

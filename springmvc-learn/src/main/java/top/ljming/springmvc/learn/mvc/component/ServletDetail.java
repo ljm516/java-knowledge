@@ -1,15 +1,15 @@
-package top.ljming.springmvc.learn.servletDetail;
+package top.ljming.springmvc.learn.mvc.component;
 
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class WhatIsServlet implements Servlet {
+public class ServletDetail implements Servlet {
 
     /**
      * 容器启动时，加载web.xml, 里面配置了该servlet，首先调用 init 方法
-     * @param servletConfig
+     * @param servletConfig servletConfig
      */
     @Override
     public void init(ServletConfig servletConfig) {

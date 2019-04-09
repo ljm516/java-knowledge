@@ -5,10 +5,7 @@ package top.ljming.springmvc.learn.policy.service;
  *
  * @author lijm
  */
-public class CommonService implements BaseService {
+public interface CommonService {
 
-    @Override
-    public void execute() {
-
-    }
+    void execute();
 }

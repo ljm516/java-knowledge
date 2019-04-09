@@ -5,5 +5,5 @@ package top.ljming.springmvc.learn.policy.service;
  *
  * @author lijm
  */
-public interface LocationService extends BaseService {
+public interface LocationService extends CommonService {
 }

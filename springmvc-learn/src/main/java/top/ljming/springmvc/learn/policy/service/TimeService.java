@@ -5,6 +5,6 @@ package top.ljming.springmvc.learn.policy.service;
  *
  * @author lijm
  */
-public interface TimeService extends BaseService {
+public interface TimeService extends CommonService {
 
 }

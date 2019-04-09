@@ -2,6 +2,8 @@ package top.ljming.springmvc.learn;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import top.ljming.springmvc.learn.mvc.component.MyApplicationContext;
+import top.ljming.springmvc.learn.mvc.component.MyEnvironment;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package top.ljming.springmvc.learn;
+package top.ljming.springmvc.learn.mvc.component;
 
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
