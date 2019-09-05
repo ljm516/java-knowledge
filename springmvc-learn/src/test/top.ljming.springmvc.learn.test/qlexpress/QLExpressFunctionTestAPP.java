@@ -3,6 +3,7 @@ package top.ljming.springmvc.learn.test.qlexpress;
 
 import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import top.ljming.springmvc.learn.qlexpress.JoinOperator;
 import top.ljming.springmvc.learn.qlexpress.QLUser;
@@ -94,13 +95,21 @@ public class QLExpressFunctionTestAPP {
     public void bindObjectMethodTest() throws Exception {
         runner.addFunctionOfClassMethod("取绝对值", Math.class.getName(), "abs", new String[]{"double"}, null);
         runner.addFunctionOfClassMethod("转换为大写", QLUser.class.getName(), "upper", new String[]{"String"}, null);
+        runner.addFunctionOfClassMethod("是否为空", StringUtils.class.getName(), "isEmpty", new String[]{"String"}, null);
         runner.addFunctionOfServiceMethod("打印", System.out, "println", new String[]{"String"}, null);
         runner.addFunctionOfServiceMethod("任意包含", new QLUser(), "anyContains", new Class[]{String.class, String.class}, null);
 
-        String express = "取绝对值(-10);转换为大写(\"hello world\");打印(\"cnm\");任意包含(\"hello world\", \"w\")";
+        String express = "取绝对值(-10);转换为大写(\"hello world\");打印(\"cnm\");任意包含(\"hello world\", \"w\");是否为空(\"\")";
         Object r = runner.execute(express, context, null, false, false);
         System.out.println(r);
 
+    }
+
+    @Test
+    public void testNull() throws Exception {
+        String express = "() && 1=1";
+        Object r = runner.execute(express, context, null, false, false);
+        System.out.println(r);
     }
 }
 

@@ -1,4 +1,4 @@
-package top.ljming.mybatisLearn.getStart;
+package top.ljming.mybatisLearn.getstart;
 
 public class User {
     private Long id;

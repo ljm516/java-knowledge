@@ -27,7 +27,9 @@ public class QLUser {
         if (StringUtils.isEmpty(value)) {
             return "";
         }
-        return value.toUpperCase();
+        String  result = value.toUpperCase();
+        System.out.println("result:" + result);
+        return result;
     }
 
     public boolean anyContains(String str, String search) {

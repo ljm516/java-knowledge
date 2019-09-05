@@ -6,7 +6,7 @@
 
     <properties resource="mysql-config.properties"/>
     <typeAliases>
-        <typeAlias type="top.ljming.mybatisLearn.getStart.User" alias="user"/>
+        <typeAlias type="top.ljming.mybatisLearn.getstart.User" alias="user"/>
     </typeAliases>
 
     <!--环境，默认 dev-->

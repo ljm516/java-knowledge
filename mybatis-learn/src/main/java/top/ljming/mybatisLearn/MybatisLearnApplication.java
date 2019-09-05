@@ -4,8 +4,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import top.ljming.mybatisLearn.getStart.MybatisStartMapper;
-import top.ljming.mybatisLearn.getStart.User;
+import top.ljming.mybatisLearn.getstart.MybatisStartMapper;
+import top.ljming.mybatisLearn.getstart.User;
 
 import java.io.IOException;
 import java.io.InputStream;

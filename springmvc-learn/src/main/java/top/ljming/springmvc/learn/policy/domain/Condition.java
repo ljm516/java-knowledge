@@ -10,14 +10,14 @@ import java.util.List;
  * @author lijm
  */
 @Data
-public class Condition extends Base {
+public class Condition {
 
     private String logicOperator;
     private String property;
     private String type;
     private String params;
-    private String descripe;
+    private String description;
 
-    private List<Base> children;
+    private List<Condition> children;
 
 }

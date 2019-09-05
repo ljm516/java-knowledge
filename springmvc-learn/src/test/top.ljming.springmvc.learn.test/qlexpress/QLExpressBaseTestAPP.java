@@ -1,8 +1,16 @@
 package top.ljming.springmvc.learn.test.qlexpress;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.code.geocoder.Geocoder;
 import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
+
+import java.security.InvalidKeyException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class QLExpressBaseTestAPP {
 
@@ -51,4 +59,69 @@ public class QLExpressBaseTestAPP {
         Object r = runner.execute(express, context, null, true, false);
         System.out.println(r);
     }
+
+    @Test
+    public void test4() throws Exception {
+        DefaultContext<String, Object> context = new DefaultContext<String, Object>();
+        String express = "!\"123\".equals(\"123\")";
+        Object r = runner.execute(express, context, null, true, false);
+        System.out.println(r);
+    }
+
+    @Test
+    public void test5() throws Exception {
+        DefaultContext<String, Object> context = new DefaultContext<String, Object>();
+        String express = "true";
+        Object r = runner.execute(express, context, null, true, false);
+        System.out.println(r);
+    }
+
+    @Test
+    public void test6() throws Exception {
+        String value = "aaa";
+
+//        StringUtils.isEmpty(value);
+        DefaultContext<String, Object> context = new DefaultContext<String, Object>();
+        runner.addFunctionOfClassMethod("是否为空", StringUtils.class.getName(), "isEmpty", new String[]{"String"}, null);
+        String express = "!是否为空(\"" + value + "\")";
+        System.out.println(express);
+        Object r = runner.execute(express, context, null, true, false);
+        System.out.println(r);
+
+    }
+
+    @Test
+    public void test8() throws Exception {
+        String express = "(\"alipay\".equals(\"alipay\") && \"wechat\".equals(\"wechat\") && (\"test@16311.com\".contains(\"163.com\") || \"170\".equals(\"170\") || \"170\".equals(\"171\")))";
+        System.out.println(express);
+        DefaultContext<String, Object> context = new DefaultContext<String, Object>();
+        Object r = runner.execute(express, context, null, true, false);
+        System.out.println(r);
+
+    }
+
+    @Test
+    public void test7() {
+        Map<String, String> context = new HashMap<>();
+        context.put("eventId", "1");
+        context.put("ruleId", "2");
+        context.put("ext_key_userId", "1234321");
+
+        JSONObject message = JSONObject.parseObject(JSONObject.toJSONString(context));
+
+        System.out.println(JSONObject.toJSONString(context));
+
+        System.out.println(message.getInteger("eventId"));
+        System.out.println(message.getString("ext_key_userId"));
+
+    }
+
+    @Test
+    public void test9() throws Exception {
+        String ql = "(\"河北省\".contains(\"河北\") && false)";
+        DefaultContext<String, Object> context = new DefaultContext<String, Object>();
+        Object r = runner.execute(ql, context, null, true, false);
+        System.out.println(r);
+    }
+
 }

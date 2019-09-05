@@ -1,4 +1,4 @@
-package top.ljming.learning.sdk;
+package top.ljming.learning.indepth.sdk;
 
 /**
  * nothing to do.
