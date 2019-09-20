@@ -1,5 +1,6 @@
-/Users/jiangmingli/learning/repo/learning-sdk/src/main/java/top/ljming/learning/sdk/listener/NewDataListener.java
-/Users/jiangmingli/learning/repo/learning-sdk/src/main/java/top/ljming/learning/sdk/callback/UpdateStatus.java
-/Users/jiangmingli/learning/repo/learning-sdk/src/main/java/top/ljming/learning/sdk/callback/NewDataCallBack.java
-/Users/jiangmingli/learning/repo/learning-sdk/src/main/java/top/ljming/learning/sdk/callback/UpdateResult.java
-/Users/jiangmingli/learning/repo/learning-sdk/src/main/java/top/ljming/learning/sdk/LearningSdkApplication.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/indepth/sdk/callback/UpdateStatus.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/indepth/sdk/callback/NewDataCallBack.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/indepth/sdk/LearningSdkApplication.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/dubboservice/DemoService.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/indepth/sdk/callback/UpdateResult.java
+/Users/jiangmingli/learning/repo/java-knowledge/learning-sdk/src/main/java/top/ljming/learning/indepth/sdk/listener/NewDataListener.java
