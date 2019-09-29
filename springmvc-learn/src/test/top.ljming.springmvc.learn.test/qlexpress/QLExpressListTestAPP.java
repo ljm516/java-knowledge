@@ -2,6 +2,7 @@ package top.ljming.springmvc.learn.test.qlexpress;
 
 import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.junit.Test;
 
 public class QLExpressListTestAPP {
@@ -43,4 +44,38 @@ public class QLExpressListTestAPP {
         Object r = runner.execute(express, context, null, false, false);
         System.out.println(r);
     }
+
+    @Test
+    public void test() throws Exception {
+        StringEscapeUtils.escapeJava("abc");
+        String thisValue = "\"abc\"";
+
+        String rightValue = "123";
+        String ql = String.format("!\"%s\".contains(\"%s\")", thisValue, rightValue);
+        System.out.println(ql);
+
+        Object r = runner.execute(ql, context, null, false, false);
+        System.out.println(r);
+    }
+
+    @Test
+    public void testEscape() throws Exception {
+        String result = StringEscapeUtils.escapeJava("' ? * \"abc\"  ?  *  <> '' '  '\" <> ' ");
+        String part = StringEscapeUtils.escapeJava("\"abc\"");
+        String ql = String.format("!\"%s\".contains(\"%s\")", result, part);
+        System.out.println(ql);
+        Object r = runner.execute(ql, context, null, false, false);
+        System.out.println(r);
+    }
+
+    @Test
+    public void testEscape2() throws Exception {
+        String result = StringEscapeUtils.escapeJava("\"{\"ALTER\":[\"de.robv.android.xposed.installer\"]}");
+        String part = StringEscapeUtils.escapeJava("\"de.robv.android.xposed.installer\"");
+        String ql = String.format("!\"%s\".contains(\"%s\")", result, part);
+        System.out.println(ql);
+        Object r = runner.execute(ql, context, null, false, false);
+        System.out.println(r);
+    }
+
 }

@@ -1,6 +1,8 @@
 package top.ljming.dubboprovider.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Argument;
+import org.apache.dubbo.config.annotation.Method;
+import org.apache.dubbo.config.annotation.Service;
 import top.ljming.learning.dubboservice.CallbackService;
 import top.ljming.learning.listener.DubboCallbackListener;
 
@@ -14,9 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author lijm
  */
-@Service(connections = 1, callbacks = 1000, version = "1.0.0",
-        parameters = {"addListener.argument.type", "top.ljming.learning.listener.DubboCallbackListener",
-                "addListener.argument.callback", "true"})
+@Service(methods = {@Method(name = "addListener",
+        arguments = {@Argument(index = 1, type = "top.ljming.learning.listener.DubboCallbackListener",callback = true)})})
 public class CallbackServiceImpl implements CallbackService {
 
     private final Map<String, DubboCallbackListener> listenerMap = new ConcurrentHashMap<>();
@@ -43,6 +44,7 @@ public class CallbackServiceImpl implements CallbackService {
     }
 
     @Override
+
     public void addListener(String msg, DubboCallbackListener listener) {
         listenerMap.put(msg, listener);
         listener.changed(msg);

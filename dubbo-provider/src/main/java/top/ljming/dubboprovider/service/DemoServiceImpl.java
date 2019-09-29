@@ -1,7 +1,7 @@
 package top.ljming.dubboprovider.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.dubbo.rpc.RpcContext;
+import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.rpc.RpcContext;
 import top.ljming.learning.dubboservice.DemoService;
 
 
