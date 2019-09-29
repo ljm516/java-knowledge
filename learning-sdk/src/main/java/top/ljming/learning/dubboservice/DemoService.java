@@ -7,5 +7,8 @@ package top.ljming.learning.dubboservice;
  */
 public interface DemoService {
 
-    public String demo(String name);
+    String demo(String name);
+
+    void context(String s);
+
 }

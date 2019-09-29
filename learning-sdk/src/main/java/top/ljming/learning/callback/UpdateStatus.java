@@ -1,4 +1,4 @@
-package top.ljming.learning.indepth.sdk.callback;
+package top.ljming.learning.callback;
 
 /**
  * 定义更新操作状态.

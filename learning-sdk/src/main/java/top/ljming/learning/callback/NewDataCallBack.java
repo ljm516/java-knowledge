@@ -1,4 +1,4 @@
-package top.ljming.learning.indepth.sdk.callback;
+package top.ljming.learning.callback;
 
 /**
  * 有新数据插入，进行回调.

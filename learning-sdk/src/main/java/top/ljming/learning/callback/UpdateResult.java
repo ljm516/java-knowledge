@@ -1,4 +1,4 @@
-package top.ljming.learning.indepth.sdk.callback;
+package top.ljming.learning.callback;
 
 import lombok.Data;
 
