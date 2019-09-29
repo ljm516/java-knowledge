@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableDubbo
+@EnableDubbo(scanBasePackages = "top.ljming.dubboprovider.service")
 public class DubboProviderApplication {
 
     public static void main(String[] args) {

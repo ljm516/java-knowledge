@@ -1,8 +1,8 @@
 package top.ljming.dubbboconsumer.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.rpc.service.EchoService;
+import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.rpc.service.EchoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.ljming.learning.domain.MyCompletableFuture;
@@ -27,7 +27,7 @@ public class DemoController {
     @Reference(timeout = 10000, interfaceClass = top.ljming.learning.dubboservice.AsyncService.class)
     private AsyncService asyncService;
 
-    @Reference(version = "1.0.0", interfaceClass =top.ljming.learning.dubboservice.CallbackService.class)
+    @Reference
     private CallbackService callbackService;
 
     /**

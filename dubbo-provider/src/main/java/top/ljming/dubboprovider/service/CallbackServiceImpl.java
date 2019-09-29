@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author lijm
  */
 @Service(methods = {@Method(name = "addListener",
-        arguments = {@Argument(index = 1, type = "top.ljming.learning.listener.DubboCallbackListener",callback = true)})})
+        arguments = {@Argument(index = 1, type = "top.ljming.learning.listener.DubboCallbackListener", callback = true)})})
 public class CallbackServiceImpl implements CallbackService {
 
     private final Map<String, DubboCallbackListener> listenerMap = new ConcurrentHashMap<>();
