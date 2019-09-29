@@ -14,12 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author lijm
  */
-@Service(connections = 1, callbacks = 1000)
-public class CallbackServiceImple implements CallbackService {
+@Service(connections = 1, callbacks = 1000, version = "1.0.0",
+        parameters = {"addListener.argument.type", "top.ljming.learning.listener.DubboCallbackListener",
+                "addListener.argument.callback", "true"})
+public class CallbackServiceImpl implements CallbackService {
 
     private final Map<String, DubboCallbackListener> listenerMap = new ConcurrentHashMap<>();
 
-    public CallbackServiceImple() {
+    public CallbackServiceImpl() {
         Thread t = new Thread(() -> {
             while (true) {
                 try {
