@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 描述类的功能.
  *
- * @author lijm
+ * @author lijmw
  */
 @Service(methods = {@Method(name = "addListener",
         arguments = {@Argument(index = 1, type = "top.ljming.learning.listener.DubboCallbackListener", callback = true)})})
