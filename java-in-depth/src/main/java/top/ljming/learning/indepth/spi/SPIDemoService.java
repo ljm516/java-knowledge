@@ -1,4 +1,4 @@
-package top.ljming.learning.spi;
+package top.ljming.learning.indepth.spi;
 
 /**
  * 描述类的功能.
