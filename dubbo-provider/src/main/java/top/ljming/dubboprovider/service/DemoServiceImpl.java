@@ -11,7 +11,6 @@ import top.ljming.learning.dubboservice.DemoService;
  * @author lijm
  */
 @Service
-//@Component
 public class DemoServiceImpl implements DemoService {
 
     @Override

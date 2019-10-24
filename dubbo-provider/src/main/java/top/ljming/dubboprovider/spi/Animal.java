@@ -1,9 +1,13 @@
 package top.ljming.dubboprovider.spi;
 
+import org.apache.dubbo.common.extension.SPI;
+
 /**
  * 描述类的功能.
  *
  * @author lijm
  */
-public class Animal {
+@SPI
+public interface Animal {
+    void talk();
 }

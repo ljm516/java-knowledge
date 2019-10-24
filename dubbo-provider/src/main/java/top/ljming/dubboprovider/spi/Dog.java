@@ -5,5 +5,9 @@ package top.ljming.dubboprovider.spi;
  *
  * @author lijm
  */
-public class Dog {
+public class Dog implements Animal {
+    @Override
+    public void talk() {
+        System.out.println("dog wangwangwang");
+    }
 }
