@@ -2,6 +2,8 @@ package top.ljming.learning.dubboservice;
 
 import top.ljming.learning.domain.MyCompletableFuture;
 
+import java.util.concurrent.CompletableFuture;
+
 
 /**
  * 异步调用的接口.
@@ -9,5 +11,7 @@ import top.ljming.learning.domain.MyCompletableFuture;
  * @author lijm
  */
 public interface AsyncService {
-    public MyCompletableFuture<String> asyncInvoke(String info);
+    MyCompletableFuture<String> asyncInvoke(String info);
+
+    CompletableFuture<String> asyncDemo(String info);
 }

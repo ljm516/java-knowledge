@@ -5,12 +5,15 @@ import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.service.EchoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.ljming.dubbboconsumer.service.Notify;
 import top.ljming.learning.domain.MyCompletableFuture;
 import top.ljming.learning.dubboservice.AsyncService;
 import top.ljming.learning.dubboservice.CallbackService;
 import top.ljming.learning.dubboservice.DemoService;
+import top.ljming.learning.dubboservice.EventNotifyService;
 import top.ljming.learning.listener.DubboCallbackListener;
 
+import javax.annotation.Resource;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -21,14 +24,23 @@ import java.util.concurrent.atomic.AtomicReference;
 @RestController
 public class DemoController {
 
-    @Reference
+    @Reference(interfaceClass = DemoService.class)
     private DemoService demoService;
 
-    @Reference(timeout = 10000, interfaceClass = top.ljming.learning.dubboservice.AsyncService.class)
+    @Reference
     private AsyncService asyncService;
 
     @Reference
     private CallbackService callbackService;
+
+    @Resource(name = "notify")
+    private Notify notify;
+
+    @Reference
+    private EventNotifyService notifyService;
+
+    public DemoController() {
+    }
 
     /**
      * getStart.
@@ -53,6 +65,7 @@ public class DemoController {
      */
     @RequestMapping(value = "/echo")
     public String echo() {
+        // 这里demoService需要时spring容器管理的bean，通过@Reference注解注入的bean无法强转
         EchoService echoService = (EchoService) demoService;
         return (String) echoService.$echo("ok");
     }
@@ -68,6 +81,7 @@ public class DemoController {
      */
     @RequestMapping(value = "/context")
     public String rpcContext() {
+        demoService.context("hello world");
         String invokeResult = demoService.demo("dubbo learn");
 
         // 本端是否为消费端，这里将返回true
@@ -77,7 +91,6 @@ public class DemoController {
         String application = RpcContext.getContext().getUrl().getParameter("application");
 
         // 每发起RPC调用，上下文状态会发生变化
-        demoService.context("hello world");
 
         return "invoke: " + invokeResult +
                 "isConsumerSize: " + isConsumerSide +
@@ -110,4 +123,11 @@ public class DemoController {
         callbackService.addListener("foo.bar", (DubboCallbackListener) msg -> System.out.println("callback: " + msg));
         return "ok";
     }
+
+    @RequestMapping(value = "/notify")
+    public String eventNotify() {
+        String result = notifyService.get(1);
+        return result;
+    }
+
 }
