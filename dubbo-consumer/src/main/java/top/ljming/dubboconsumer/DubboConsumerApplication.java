@@ -1,11 +1,11 @@
-package top.ljming.dubbboconsumer;
+package top.ljming.dubboconsumer;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-@EnableDubbo
+@SpringBootApplication(scanBasePackages = {"top.ljming.dubboconsumer"})
+@EnableDubbo(scanBasePackages = "top.ljming")
 public class DubboConsumerApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package top.ljming.dubbboconsumer.service;
+package top.ljming.dubboconsumer.service;
 
 /**
  * 描述类的功能.

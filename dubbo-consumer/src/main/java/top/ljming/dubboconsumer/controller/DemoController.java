@@ -1,11 +1,11 @@
-package top.ljming.dubbboconsumer.controller;
+package top.ljming.dubboconsumer.controller;
 
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.service.EchoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.ljming.dubbboconsumer.service.Notify;
+import top.ljming.dubboconsumer.service.Notify;
 import top.ljming.learning.domain.MyCompletableFuture;
 import top.ljming.learning.dubboservice.AsyncService;
 import top.ljming.learning.dubboservice.CallbackService;

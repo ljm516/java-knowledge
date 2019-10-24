@@ -1,7 +1,7 @@
-package top.ljming.dubbboconsumer.service.impl;
+package top.ljming.dubboconsumer.service.impl;
 
 import org.springframework.stereotype.Service;
-import top.ljming.dubbboconsumer.service.Notify;
+import top.ljming.dubboconsumer.service.Notify;
 
 import java.util.HashMap;
 import java.util.Map;
