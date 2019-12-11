@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.14.RELEASE</spring.version>
+        <spring.version>5.1.9.RELEASE</spring.version>
     </properties>
 
     <build>
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.3.18.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -176,7 +176,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>QLExpress</artifactId>
-            <version>3.2.0</version>
+            <version>3.2.3</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

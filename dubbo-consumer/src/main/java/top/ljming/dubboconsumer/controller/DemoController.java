@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @RestController
 public class DemoController {
 
-    @Reference(interfaceClass = DemoService.class)
+    @Reference(interfaceClass = DemoService.class, loadbalance = "consistenthash")
     private DemoService demoService;
 
     @Reference

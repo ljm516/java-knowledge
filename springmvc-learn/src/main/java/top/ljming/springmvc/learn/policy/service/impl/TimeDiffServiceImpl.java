@@ -1,5 +1,6 @@
 package top.ljming.springmvc.learn.policy.service.impl;
 
+import org.springframework.stereotype.Service;
 import top.ljming.springmvc.learn.policy.service.TimeService;
 
 /**
@@ -7,6 +8,7 @@ import top.ljming.springmvc.learn.policy.service.TimeService;
  *
  * @author lijm
  */
+@Service(value="timediff")
 public class TimeDiffServiceImpl implements TimeService {
     @Override
     public void execute() {

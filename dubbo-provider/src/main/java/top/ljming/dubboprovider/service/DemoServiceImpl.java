@@ -10,7 +10,7 @@ import top.ljming.learning.dubboservice.DemoService;
  *
  * @author lijm
  */
-@Service
+@Service(provider = "dubbo-learn")
 public class DemoServiceImpl implements DemoService {
 
     @Override

@@ -1,4 +1,4 @@
-package top.ljming.learning.indepth.concurrent;
+package top.ljming.learning.indepth.thread;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.locks.Condition;
 
 /**
  * 描述类的功能.

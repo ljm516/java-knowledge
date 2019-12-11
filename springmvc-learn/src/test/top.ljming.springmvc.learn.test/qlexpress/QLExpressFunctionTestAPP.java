@@ -3,6 +3,7 @@ package top.ljming.springmvc.learn.test.qlexpress;
 
 import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import top.ljming.springmvc.learn.qlexpress.JoinOperator;
@@ -110,6 +111,25 @@ public class QLExpressFunctionTestAPP {
         String express = "() && 1=1";
         Object r = runner.execute(express, context, null, false, false);
         System.out.println(r);
+    }
+
+    @Test
+    public void test() throws Exception {
+        String express = "(\"\\u4E30\\u5DE2\\u6843\\u6E90\\u5C4593\\u53F7302\\u5BA4\\\\\".contains(\"\\u542F\\u822A\\u56FD\\u96453\\u671F\")";
+        Object r = runner.execute(express, context, null, false, false);
+        System.out.println(r);
+    }
+
+    @Test
+    public void testError() throws Exception {
+        String a = StringEscapeUtils.escapeJava("abc") ;
+        String b = StringEscapeUtils.escapeJava("abc");
+
+        String express = "\""+ a + "\"" +  ".contains(" + "\""+ b + "\")";
+        System.out.println(express);
+        Object r = runner.execute(express, context, null, false, false);
+        System.out.println(r);
+
     }
 }
 
