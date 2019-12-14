@@ -21,11 +21,13 @@ public class ReentrantLockSample {
     public static void main(String[] args) throws InterruptedException {
         //demo();
 
+        forgetUnlock();
+
         //lockInterrupt();
 
         //tryLock();
 
-        fairLock();
+        //fairLock();
 
     }
 
@@ -59,6 +61,40 @@ public class ReentrantLockSample {
             } finally {
                 lock.unlock();
                 System.out.println(Thread.currentThread().getName() + "释放锁");
+            }
+        }
+    }
+
+    public static void forgetUnlock() throws InterruptedException {
+        ForgetUnlock task = new ForgetUnlock();
+        Thread t1 = new Thread(task);
+        Thread t2 = new Thread(task);
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println(nums);
+    }
+
+    public static class ForgetUnlock implements Runnable {
+
+        @Override
+        public void run() {
+            lock.lock();
+            System.out.println(Thread.currentThread().getName() + "获取到锁");
+            try {
+                for (int i = 0; i < 10000; i++) {
+                    nums++;
+                }
+                throw new RuntimeException("test");
+            } catch (Exception e) {
+                System.out.println(Thread.currentThread().getName() + "Exception");
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
         }
     }
@@ -206,5 +242,13 @@ public class ReentrantLockSample {
         lock.isHeldByCurrentThread(); // 判断锁是否被当前线程持有 exclusiveOwnerThread == Thread.currentThread
         lock.getHoldCount(); // 锁进入的次数，获取的是state的值，每进入一次，state+1
         boolean fair = lock.isFair(); // 是否为公平锁
+
+        int i = 1 >> 31;
+        short s = 1 >> 31;
+        double d = 1 >> 31;
+        long l = 1 >> 31;
+        float f = 1 >> 31;
+
+        Integer bigi = 1 >> 31;
     }
 }
