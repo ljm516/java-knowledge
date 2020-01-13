@@ -9,7 +9,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class VolatileDemo {
 
-    private static volatile int i;
+    private static int i;
     static CountDownLatch countDownLatch = new CountDownLatch(10);
     private static final Object lock = new Object();
 
@@ -18,7 +18,13 @@ public class VolatileDemo {
     public static void main(String[] args) throws InterruptedException {
 
         for (int j = 0; j < 10; j++) {
-            Thread thread = new Thread(() -> add());
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    i++;
+                    countDownLatch.countDown();
+                }
+            });
             thread.start();
         }
         countDownLatch.await();
@@ -27,17 +33,7 @@ public class VolatileDemo {
 
     public static void add() {
         i++;
+        countDownLatch.countDown();
     }
 
-
-    public static Object getInstance() {
-        if (null == instance) {
-            synchronized (lock) {
-                if (null == instance) {
-                    instance = new Object();
-                }
-            }
-        }
-        return instance;
-    }
 }

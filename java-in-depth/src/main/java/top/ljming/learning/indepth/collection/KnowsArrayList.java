@@ -74,6 +74,7 @@ public class KnowsArrayList {
         while (it.hasNext()) {
             Integer i = (Integer) it.next();
             nums.remove(i);
+
         }
     }
 }

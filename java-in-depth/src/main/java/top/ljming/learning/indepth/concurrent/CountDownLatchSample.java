@@ -18,7 +18,6 @@ public class CountDownLatchSample {
         System.out.println("start: " + System.currentTimeMillis());
         countDownLatch.await(11000, TimeUnit.MILLISECONDS);
         System.out.println("end: " + System.currentTimeMillis());
-
         System.out.println("over");
     }
 
