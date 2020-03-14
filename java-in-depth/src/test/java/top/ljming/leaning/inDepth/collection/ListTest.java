@@ -71,4 +71,18 @@ public class ListTest {
         nums.getLast();
 
     }
+
+    @Test
+    public void test2Arr() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(i + "_");
+        }
+        String[] arr = new String[0];
+        arr = list.toArray(arr);
+
+        for (String s : arr) {
+            System.out.println(s);
+        }
+    }
 }

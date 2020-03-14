@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <!--spring 循环依赖问题-->
+
+    <!--
+    循环依赖的对象以构造函数的形式注入，会抛出BeanCurrentlyInCreationException。因为在spring容器会将每一个正在创建的Bean标志服放在一个
+    "当前创建Bean池"，Bean的标识符在创建过程中将一直保持在这个池中。如果在创建过程中发现bean已经在这个池里，将会抛出BeanCurrentlyInCreationException
+    表示循环依赖。而对于创建完毕的Bean将从这个池中移除。
+    -->
+    <!--<bean id="classA" class="top.ljming.springmvc.learn.spring.ClassA">-->
+        <!--<constructor-arg index="0" ref="classB"/>-->
+    <!--</bean>-->
+    <!--<bean id="classB" class="top.ljming.springmvc.learn.spring.ClassB">-->
+        <!--<constructor-arg index="0" ref="classC"/>-->
+    <!--</bean>-->
+    <!--<bean id="classC" class="top.ljming.springmvc.learn.spring.ClassC">-->
+        <!--<constructor-arg index="0" ref="classA"/>-->
+    <!--</bean>-->
+
+    <!--
+    setter方式单例，默认方式。这个方式的步骤，是先将bean对象实例化后再设置对象属性。
+    spring先是用个构造函数实例化Bean对象，此时spring会将这个实例化结束的对象放到一个Map中，
+    并且spring提供了获取这个未设置属性的实例化对象引用的方法。
+    -->
+    <bean id="classA" class="top.ljming.springmvc.learn.spring.ClassA">
+        <property name="classB" ref="classB"/>
+    </bean>
+    <bean id="classB" class="top.ljming.springmvc.learn.spring.ClassB">
+        <property name="classC" ref="classC"/>
+    </bean>
+    <bean id="classC" class="top.ljming.springmvc.learn.spring.ClassC">
+        <property name="classA" ref="classA"/>
+    </bean>
+
+    <!--
+    setter方式原型，prototype。scope="prototype"表示每次请求都会创建一个实例对象。
+    和singleton的区别是，有状态的bean都是用prototype，无状态的一般使用singleton。
+    这种循环依赖的方式，也会抛出将会抛出BeanCurrentlyInCreationException。
+    对于prototype作用域的Bean,spring容器无法完成依赖注入，
+    因为prototype作用域的bean，spring容器不会进行缓存，因此无法提前暴露一个创建中的bean
+    -->
+    <!--<bean id="classA" class="top.ljming.springmvc.learn.spring.ClassA" scope="prototype">-->
+        <!--<property name="classB" ref="classB"/>-->
+    <!--</bean>-->
+    <!--<bean id="classB" class="top.ljming.springmvc.learn.spring.ClassB" scope="prototype">-->
+        <!--<property name="classC" ref="classC"/>-->
+    <!--</bean>-->
+    <!--<bean id="classC" class="top.ljming.springmvc.learn.spring.ClassC" scope="prototype">-->
+        <!--<property name="classA" ref="classA"/>-->
+    <!--</bean>-->
+
+</beans>

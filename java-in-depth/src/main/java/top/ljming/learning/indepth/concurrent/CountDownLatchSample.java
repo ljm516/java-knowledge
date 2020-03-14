@@ -19,6 +19,13 @@ public class CountDownLatchSample {
         countDownLatch.await(11000, TimeUnit.MILLISECONDS);
         System.out.println("end: " + System.currentTimeMillis());
         System.out.println("over");
+
+        countDownLatch = new CountDownLatch(threadNums);
+        demo();
+        System.out.println("start again: " + System.currentTimeMillis());
+        countDownLatch.await(11000, TimeUnit.MILLISECONDS);
+        System.out.println("end again: " + System.currentTimeMillis());
+        System.out.println("over again");
     }
 
     private static void demo() {
@@ -37,11 +44,11 @@ public class CountDownLatchSample {
         @Override
         public void run() {
             try {
-                long sleep = 1000;
+                long sleep = 2000;
                 Thread.sleep(sleep);
-                if (no == 5) {
-                    throw new RuntimeException("test exception not countDown");
-                }
+//                if (no == 5) {
+//                    throw new RuntimeException("test exception not countDown");
+//                }
                 System.out.println(Thread.currentThread().getName() + " finished");
                 countDownLatch.countDown();
             } catch (InterruptedException e) {

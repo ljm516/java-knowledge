@@ -39,4 +39,11 @@ public class QuickSort {
         return start;
     }
 
+    public static void main(String[] args) {
+        int[] arr = new int[] {9, 5, 4, 6, 8, 7, 3, 1, 2};
+        sort(arr);
+        for (int i : arr) {
+            System.out.print(i + "，");
+        }
+    }
 }

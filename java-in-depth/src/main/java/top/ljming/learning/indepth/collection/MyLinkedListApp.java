@@ -26,6 +26,5 @@ public class MyLinkedListApp {
         for (int i = 0; i < myLinkedList.length; i++) {
             System.out.println(myLinkedList.get(i));
         }
-
     }
 }

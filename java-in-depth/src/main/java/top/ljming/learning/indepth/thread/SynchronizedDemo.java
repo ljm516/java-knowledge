@@ -44,7 +44,7 @@ public class SynchronizedDemo {
 //        }
 //    }
 
-//    public static void main(String[] args) throws InterruptedException {
+//    public static void main(StringApp[] args) throws InterruptedException {
 //        SynchronizedDemo synchronizedDemo = new SynchronizedDemo();
 //        Task task = new Task(synchronizedDemo);
 //

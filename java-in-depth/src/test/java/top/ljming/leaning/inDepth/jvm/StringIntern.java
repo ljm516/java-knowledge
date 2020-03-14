@@ -9,7 +9,7 @@ package top.ljming.leaning.inDepth.jvm;
 import org.junit.Test;
 
 /**
- * String.intern() 测试.
+ * StringApp.intern() 测试.
  *
  * @author lijm
  */

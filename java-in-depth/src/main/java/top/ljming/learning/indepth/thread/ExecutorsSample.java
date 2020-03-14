@@ -44,6 +44,7 @@ public class ExecutorsSample {
 
     private static void submitCallableTask() throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
+        executorService.shutdown();
         List<Future<?>> futureList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Future<?> future = executorService.submit(new CallableTask());

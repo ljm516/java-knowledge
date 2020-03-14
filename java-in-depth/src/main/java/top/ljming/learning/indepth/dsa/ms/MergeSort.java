@@ -1,6 +1,7 @@
-package top.ljming.learning.indepth.dsa.ms.ljsw;
+package top.ljming.learning.indepth.dsa.ms;
 
 /**
+ * 【逻辑思维】
  * 两个排好序的数组，然后合并一个新的排好序的大数组.
  *
  * @author lijm

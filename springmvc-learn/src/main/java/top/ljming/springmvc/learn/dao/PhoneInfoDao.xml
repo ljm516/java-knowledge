@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.ljming.springmvc.learn.dao.PhoneInfoDao">
+
+    <resultMap id="infoMap" type="top.ljming.springmvc.learn.entity.PhoneInfo">
+        <id property="id" column="id"/>
+        <result property="number" column="number"/>
+        <result property="head" column="head"/>
+        <result property="headNum" column="head_num"/>
+        <result property="operator" column="operator"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="createdTime" column="created_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="top.ljming.springmvc.learn.entity.PhoneInfo">
+        insert into
+        `phone_info` (`number`, `head`, `head_num`, `operator`, `province`, `city`)
+        values (#{number}, #{head}, #{headNum}, #{operator}, #{province}, #{city})
+    </insert>
+</mapper>

@@ -91,7 +91,7 @@ public class ReentrantLockSample {
                 }
                 throw new RuntimeException("test");
             } catch (Exception e) {
-                System.out.println(Thread.currentThread().getName() + "Exception");
+                System.out.println(Thread.currentThread().getName() + "ExceptionApp");
                 e.printStackTrace();
             } finally {
                 lock.unlock();
