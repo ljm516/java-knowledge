@@ -1,5 +1,7 @@
 package top.ljming.learning.indepth.dsa.ms;
 
+import top.ljming.learning.indepth.dsa.domain.ListNode;
+
 /**
  * 小米.
  * <p>
@@ -97,12 +99,4 @@ public class TwoNumAddPlus {
         return r;
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 }

@@ -18,6 +18,10 @@ public class WomanProgrammerWrapper implements Person {
     @Override
     public void show() {
         person.show();
+        womanDressWrapper();
+    }
+
+    public void womanDressWrapper() {
         System.out.println("woman programmer wear pretty well");
     }
 }

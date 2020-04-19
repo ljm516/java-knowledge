@@ -8,7 +8,7 @@ package top.ljming.learning.indepth.dsa.sort;
 public class InsertSort {
 
     public static void main(String[] args) {
-        sort(new int[] {5, 1, 4, 2, 3});
+        sort(new int[]{5, 1, 4, 2, 3});
     }
 
     public static int[] sort(int[] arr) {

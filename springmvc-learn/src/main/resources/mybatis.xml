@@ -6,7 +6,7 @@
 <configuration>
     <settings>
         <!-- 这个配置使全局的映射器启用或禁用缓存。默认true -->
-        <setting name="cacheEnabled" value="false"/>
+        <setting name="cacheEnabled" value="true"/>
         <!-- 全局启用或禁用延迟加载。默认true，为true的会使用cglib作代理 -->
         <setting name="lazyLoadingEnabled" value="false"/>
         <!-- 允许或不允许多种结果集从一个单独的语句中返回。默认true -->

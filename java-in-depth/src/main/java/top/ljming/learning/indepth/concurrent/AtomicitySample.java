@@ -6,7 +6,6 @@ package top.ljming.learning.indepth.concurrent;
  * @author lijm
  */
 public class AtomicitySample {
-
     public static long t = 0;
     public static class ChangeT implements Runnable {
 

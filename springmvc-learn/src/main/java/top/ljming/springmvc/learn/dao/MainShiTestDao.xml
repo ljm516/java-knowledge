@@ -3,11 +3,14 @@
 
 <mapper namespace="top.ljming.springmvc.learn.dao.MainShiTestDao">
 
+    <cache/>
+
     <resultMap id="objMap" type="top.ljming.springmvc.learn.entity.MainShiObj">
         <id property="id" column="id"/>
         <result property="a" column="a"/>
         <result property="b" column="b"/>
         <result property="c" column="c"/>
+        <result property="createdTime" column="c_time"/>
     </resultMap>
 
     <insert id="insert" parameterType="top.ljming.springmvc.learn.entity.MainShiObj">
@@ -15,4 +18,12 @@
         `ms_gsx_wh` (`a`, `b`, `c`)
         values (#{a}, #{b}, #{c})
     </insert>
+
+    <select id="selectOne" parameterType="int" resultMap="objMap">
+        select * from `ms_gsx_wh` where id=#{id}
+    </select>
+
+    <select id="selectById" parameterType="int" resultMap="objMap" useCache="true">
+        select * from `ms_gsx_wh` where id=#{id}
+    </select>
 </mapper>

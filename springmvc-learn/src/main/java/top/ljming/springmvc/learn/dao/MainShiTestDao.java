@@ -12,4 +12,8 @@ import top.ljming.springmvc.learn.entity.MainShiObj;
 public interface MainShiTestDao {
 
     void insert(MainShiObj obj);
+
+    MainShiObj selectOne(int id);
+
+    MainShiObj selectById(int id);
 }

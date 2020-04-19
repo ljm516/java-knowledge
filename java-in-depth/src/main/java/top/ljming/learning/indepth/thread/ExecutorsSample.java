@@ -107,10 +107,11 @@ public class ExecutorsSample {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        submitRunnableTask();
         //submitCallableTask();
-        System.out.println("current time: " + System.currentTimeMillis() / 1000);
-        scheduleWithFixedDelay();
+//        System.out.println("current time: " + System.currentTimeMillis() / 1000);
+//        scheduleWithFixedDelay();
     }
     public static void method() {
         Executors.newFixedThreadPool(10);

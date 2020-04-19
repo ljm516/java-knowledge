@@ -1,0 +1,12 @@
+package top.ljming.learning.indepth.designpatterns.adapter;
+
+/**
+ * 描述类的功能.
+ *
+ * @author lijm
+ */
+public class AdapterApp {
+
+    public static void main(String[] args) {
+    }
+}

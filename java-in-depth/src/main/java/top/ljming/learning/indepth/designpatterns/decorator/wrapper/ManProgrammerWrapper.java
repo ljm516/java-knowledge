@@ -18,6 +18,10 @@ public class ManProgrammerWrapper implements Person { // 包装类也得实现�
     @Override
     public void show() {
         person.show();
+        manDressWrapper();
+    }
+
+    public void manDressWrapper() {
         System.out.println("man programmer like to wear plaid shirts");
     }
 }

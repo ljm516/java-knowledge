@@ -17,19 +17,19 @@ public class ListSpliter {
      * @param preCnt 每个子列表个数
      * @return 子列表的集合
      */
-    public static List<List<Integer>> split(List<Integer> originList, int preCnt) {
+    public static <T>List<List<T>> split(List<T> originList, int preCnt) {
         if(null == originList || originList.size() == 0) {
             return null;
         }
         preCnt = preCnt <= 0 ? 1000 : preCnt; // 默认1000个一组
-        List<List<Integer>> resultList = new ArrayList<>();
+        List<List<T>> resultList = new ArrayList<>();
         int subSize = originList.size() % preCnt == 0 ? originList.size() / preCnt : ( originList.size() / preCnt) + 1;
         int fromIndex;
         int toIndex;
         for (int i = 0; i < subSize; i++) {
             fromIndex = i*preCnt;
             toIndex = i * preCnt + preCnt > originList.size() ? originList.size() : i * preCnt + preCnt;
-            List<Integer> subList = originList.subList(fromIndex, toIndex);
+            List<T> subList = originList.subList(fromIndex, toIndex);
             resultList.add(subList);
         }
         return resultList;

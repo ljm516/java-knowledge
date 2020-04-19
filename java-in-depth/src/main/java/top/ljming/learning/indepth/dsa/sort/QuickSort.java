@@ -1,49 +1,45 @@
 package top.ljming.learning.indepth.dsa.sort;
 
 /**
- * 描述类的功能.
+ * 快排.
  *
  * @author lijm
  */
 public class QuickSort {
 
-
-    public static void sort(int[] arr) {
-        doSort(arr, 0, arr.length - 1);
+    public int[] sort(int[] nums) {
+        return doSort(nums, 0, nums.length - 1);
     }
 
-    private static void doSort(int[] arr, int start, int end) {
-
-        int pivotIndex = getPivotIndex(arr, start, end);
-        doSort(arr, start, pivotIndex - 1);
-        doSort(arr, pivotIndex + 1, end);
-
-    }
-
-    private static int getPivotIndex(int[] arr, int start, int end) {
-        int pivot = arr[start];
-        while (start < end) {
-            // 当队尾的元素大于等于基准数据时，向前移动end指针
-            while (start < end && arr[end] >= pivot) {
-                end--;
-            }
-            arr[start] = arr[end];
-            // 当队首元素小于等于基准数据时，向后移动start指针
-            while (start < end && arr[start] <= pivot) {
-                start++;
-            }
-            // 当队首元素大于temp时，需要将其赋值给high
-            arr[end] = arr[start];
+    private int[] doSort(int[] nums, int l, int r) {
+        // 完成排序的依据
+        if (l >= r) {
+            return nums;
         }
-        arr[start] = pivot;
-        return start;
+        // 算出pivot的下标，作为左右子序列排序的下标
+        int pivotIdx = getPivotIdx(nums, l, r);
+        doSort(nums, l, pivotIdx - 1);
+        doSort(nums, pivotIdx + 1, r);
+        return nums;
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[] {9, 5, 4, 6, 8, 7, 3, 1, 2};
-        sort(arr);
-        for (int i : arr) {
-            System.out.print(i + "，");
+    private int getPivotIdx(int[] nums, int l, int r) {
+        // 选择最左边的为基准
+        int pivot = nums[l];
+        while (l < r) {
+            // 不断移动右下标，如果当前下标值小于pivot基准值，跳出循环，把该值放到pivot的左边
+            while (l < r && nums[r] >= pivot) {
+                r--;
+            }
+            nums[l] = nums[r];
+            // 不断移动左下标，如果当前下标值大于pivot基准值，跳出循环，把该值放到pivot的右边
+            while (l < r && nums[l] <= pivot) {
+                l++;
+            }
+            nums[r] = nums[l];
         }
+        // 整个循环结束，l=r，将pivot的值放入该下标
+        nums[l] = pivot;
+        return l;
     }
 }

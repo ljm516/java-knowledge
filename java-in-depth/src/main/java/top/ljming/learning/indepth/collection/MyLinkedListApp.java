@@ -1,6 +1,6 @@
 package top.ljming.learning.indepth.collection;
 
-import top.ljming.learning.indepth.dsa.self.MyLinkedList;
+import top.ljming.learning.indepth.dsa.domain.MyLinkedList;
 
 /**
  * 描述类的功能.
@@ -10,6 +10,7 @@ import top.ljming.learning.indepth.dsa.self.MyLinkedList;
 public class MyLinkedListApp {
 
     public static void main(String[] args) {
+
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.add("hello");
         myLinkedList.add("world");
