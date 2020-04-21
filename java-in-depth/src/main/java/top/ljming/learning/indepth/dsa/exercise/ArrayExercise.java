@@ -1,6 +1,9 @@
 package top.ljming.learning.indepth.dsa.exercise;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * 数组知识点.
@@ -96,26 +99,49 @@ public class ArrayExercise {
         return newArr;
     }
 
+    private int[] mergeKArr(List<int[]> arrays) {
+
+        int totalLen = 0;
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for (int[] arr : arrays) {
+            totalLen += arr.length;
+            for (int n : arr) {
+                queue.offer(n);
+            }
+        }
+        int[] big = new int[totalLen];
+        int idx = 0;
+        while (!queue.isEmpty()) {
+            big[idx] = queue.poll();
+            idx++;
+        }
+        return big;
+    }
+
     public static void main(String[] args) {
         ArrayExercise exercise = new ArrayExercise();
-        for (int i = 1; i <= 20; i++) {
-            exercise.add(i);
-        }
+//        for (int i = 1; i <= 20; i++) {
+//            exercise.add(i);
+//        }
+//
+//        int num = exercise.remove(19);
+//        System.out.println("remove: " + num);
+//
+//        int old = exercise.update(19, 30);
+//        System.out.println("update: " + old);
+//
+//        for (int n : exercise.table) {
+//            System.out.print(n + ",");
+//        }
+        int[] arr1 = new int[]{0, 2, 3, 4, 7, 9, 10};
+        int[] arr2 = new int[]{1, 5, 6, 8};
 
-        int num = exercise.remove(19);
-        System.out.println("remove: " + num);
+        List<int[]> arrays = new ArrayList<>();
+        arrays.add(arr1);
+        arrays.add(arr2);
 
-        int old = exercise.update(19, 30);
-        System.out.println("update: " + old);
-
-        for (int n : exercise.table) {
-            System.out.print(n + ",");
-        }
-        int[] arr1 = new int[] {0, 2, 3, 4, 7, 9, 10};
-        int[] arr2 = new int[] {1, 5, 6, 8};
-
-        int[] r = exercise.merge(arr1, arr2);
-        for(int n : r) {
+        int[] r = exercise.mergeKArr(arrays);
+        for (int n : r) {
             System.out.print(n + ",");
         }
     }

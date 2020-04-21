@@ -15,6 +15,13 @@ public class PackageProblem {
 
     boolean[][] mem = new boolean[5][10]; // 记录递归节点是否已经处理过
 
+    /**
+     * 基本的回溯思想，使用递归的方式，枚举每种可能.
+     *
+     * @param i i
+     * @param cw cw
+     * @return int
+     */
     private int huisu(int i, int cw) {
         if (cw == w || i == n) {
             if (cw > maxW) {
@@ -28,6 +35,15 @@ public class PackageProblem {
         return huisu(i + 1, cw); // 选择不装
     }
 
+    /**
+     * 回溯的思想.
+     *
+     * 在基础的回溯思想上做了优化，是用一个容器保存已经处理过的状态.
+     *
+     * @param i i
+     * @param cw cw
+     * @return int
+     */
     private int huisu_op(int i, int cw) {
         if (cw == w || i == n) {
             if (cw > maxW) {
@@ -45,7 +61,14 @@ public class PackageProblem {
         return huisu(i + 1, cw); // 选择不装
     }
 
-
+    /**
+     * 使用动态规划的思想.
+     *
+     * @param weight weight
+     * @param n i
+     * @param w w
+     * @return int
+     */
     private int dtgh(int[] weight, int n, int w) {
         boolean[][] states = new boolean[n][w + 1];
         states[0][0] = true;

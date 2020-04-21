@@ -1,5 +1,8 @@
 package top.ljming.learning.indepth.dsa.exercise;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * 排序的练习.
  *
@@ -94,11 +97,23 @@ public class SortExercise {
 
     }
 
+    public void headSort(int[] arr) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o));
+        for(int a : arr) {
+            queue.offer(a);
+        }
+        int idx = 0;
+        while (!queue.isEmpty()) {
+            arr[idx] = queue.poll();
+            idx++;
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[] {4, 5, 6, 3, 2, 1};
 
         SortExercise exercise = new SortExercise();
-        exercise.selectSort(arr);
+        exercise.headSort(arr);
 
         for (int a : arr) {
             System.out.print(a + ",");

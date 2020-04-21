@@ -16,4 +16,10 @@ public class Tree {
         this.right = right;
         this.value = value;
     }
+
+    public Tree(int value) {
+        this.value = value;
+    }
+
+
 }
