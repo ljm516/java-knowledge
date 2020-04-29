@@ -7,36 +7,59 @@ package top.ljming.learning.indepth.dsa.lesson.geekbang;
  */
 public class RemainMin {
 
-    public int[] removeKNums(int nums, int k) {
-
-        int start = nums;
-        int r[] = new int[k];
+    public long[] removeKNums(long nums, int k) {
+        long r[] = new long[k];
         while (k > 0) {
-            int last = start % 10;
-            int prev = start;
-            int d = 1;
-            while (prev > 10) {
-                prev = prev / 10;
-                d *= 10;
+            long yu = 0;
+            int divTime = 0;
+            while (nums >= 100) {
+                yu += (nums % 10) * Math.pow(10, divTime);
+                nums = nums / 10;
+                divTime++;
             }
-            if (prev > last) {
-                start = start % d;
-                r[k-1]=prev;
+            long hi = nums / 10;
+            long lo = nums % 10;
+
+            if (hi > lo) { // 移除高位
+                nums = (long) (lo * Math.pow(10, divTime) + yu);
+                r[k - 1] = hi;
             } else {
-                start = start / 10;
-                r[k-1]=last;
+                nums = (long) (hi * Math.pow(10, divTime) + yu);
+                r[k - 1] = lo;
             }
             k--;
         }
-        System.out.println(start);
+        System.out.println(nums);
         return r;
+    }
+
+    public int minPathSum(int[][] grid) {
+        return cal(grid, 0, 0);
+    }
+
+    public int cal(int[][] grid, int row, int col) {
+        if (row == grid.length || col == grid[0].length) {
+            return Integer.MAX_VALUE;
+        }
+        if (row == grid.length - 1 && col == grid[0].length - 1) {
+            return grid[row][col];
+        }
+        return grid[row][col] + Math.min(cal(grid, row + 1, col), cal(grid, row, col + 1));
     }
 
     public static void main(String[] args) {
         RemainMin remainMin = new RemainMin();
-        int[] r = remainMin.removeKNums(453134, 3);
-        for (int i : r) {
-            System.out.println(i);
-        }
+//        long[] r = remainMin.removeKNums(4556847594546L, 5);
+//        for (long i : r) {
+//            System.out.println(i);
+//        }
+
+        int[][] in = new int[][] {
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}
+        };
+        remainMin.minPathSum(in);
+
     }
 }

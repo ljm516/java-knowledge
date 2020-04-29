@@ -113,11 +113,94 @@ public class BinarySearch {
         return hi;
     }
 
+
+    public int findTargetTimes(int[] nums, int target) {
+        if (null == nums || nums.length == 0) {
+            return 0;
+        }
+        int i = 0, j = nums.length - 1;
+        while (i <= j) {
+            int m = (i + j) / 2;
+            if (nums[m] <= target) {
+                i = m + 1;
+            } else {
+                j = m - 1;
+            }
+        }
+        int right = i;
+
+        i = 0;
+        j = nums.length - 1;
+        while (i <= j) {
+            int m = (i + j) / 2;
+            if (nums[m] < target) {
+                i = m + 1;
+            } else {
+                j = m - 1;
+            }
+        }
+        int left = j;
+
+        return right - left - 1;
+    }
+
+    public int findTargetTimes2(int nums[], int target) {
+        if (null == nums || nums.length == 0) {
+            return 0;
+        }
+        return bs(nums, target + 1) - bs(nums, target - 1) - 1;
+    }
+
+    public int bs(int[] nums, int target) {
+        int lo = 0;
+        int hi = nums.length - 1;
+        int mid;
+        while (lo <= hi) {
+            mid = lo + (hi - lo) / 2;
+            if (nums[mid] < target) {
+                lo = mid + 1;
+            } else if (nums[mid] > target) {
+                hi = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return lo;
+    }
+
+
+    public int maxInArray(int[] nums) {
+        if (null == nums || nums.length == 0) {
+            return -1;
+        }
+        int lo = 0;
+        int hi = nums.length - 1;
+        int mid;
+        while (lo <= hi) {
+            mid = lo + (hi - lo) / 2;
+            if (mid == nums.length - 1 || mid == 0) {
+                return nums[mid];
+            }
+            if (nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1]) {
+                return nums[mid];
+            }
+            if (nums[mid] > nums[mid + 1] && nums[mid] < nums[mid - 1]) { // 降序部分
+                hi = mid - 1;
+            }
+            if (nums[mid] < nums[mid + 1] && nums[mid] > nums[mid - 1]) { // 升序部分
+                lo = mid + 1;
+            }
+        }
+
+        return nums[lo];
+    }
+
     public static void main(String[] args) {
+        //,
         BinarySearch bs = new BinarySearch();
-//        int arr[] = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+        int arr[] = new int[]{9,7, 6, 5, 4, 3, 2};
 //        System.out.println(bs.findFirstBiggerTarget(arr, 6));
 
-        System.out.println(bs.mySqrt(9));
+        System.out.println(bs.maxInArray(arr));
     }
 }

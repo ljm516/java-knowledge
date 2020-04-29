@@ -23,30 +23,30 @@ import top.ljming.learning.indepth.dsa.domain.ListNode;
  */
 public class TowNumberAdd {
 
-    public static void main(String[] args) {
-        ListNode one = new ListNode(1);
-        ListNode two = new ListNode(2);
-        ListNode three = new ListNode(3);
-        ListNode four = new ListNode(4);
-
-        one.next = two;
-        two.next = three;
-        three.next = four;
-
-        ListNode five = new ListNode(5);
-        ListNode six = new ListNode(6);
-        ListNode seven = new ListNode(7);
-        ListNode eight = new ListNode(8);
-
-        five.next = six;
-        six.next = seven;
-        seven.next = eight;
-
-        ListNode r = solution(one, five);
-        do {
-            System.out.println(r.val);
-        } while ((r = r.next) != null);
-    }
+//    public static void main(String[] args) {
+//        ListNode one = new ListNode(1);
+//        ListNode two = new ListNode(2);
+//        ListNode three = new ListNode(3);
+//        ListNode four = new ListNode(4);
+//
+//        one.next = two;
+//        two.next = three;
+//        three.next = four;
+//
+//        ListNode five = new ListNode(5);
+//        ListNode six = new ListNode(6);
+//        ListNode seven = new ListNode(7);
+//        ListNode eight = new ListNode(8);
+//
+//        five.next = six;
+//        six.next = seven;
+//        seven.next = eight;
+//
+//        ListNode r = solution(one, five);
+//        do {
+//            System.out.println(r.val);
+//        } while ((r = r.next) != null);
+//    }
 
     private static ListNode solution(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
@@ -71,5 +71,56 @@ public class TowNumberAdd {
         }
 
         return head.next;
+    }
+
+    public static String solution(String s1, String s2) {
+        if (null == s1 && s2 == null) {
+            return null;
+        }
+        if (null == s1) {
+            return s2;
+        }
+        if (null == s2) {
+            return s1;
+        }
+
+        char[] chs1 = s1.toCharArray();
+        char[] chs2 = s2.toCharArray();
+
+        int lens1 = chs1.length;
+        int lens2 = chs2.length;
+        String result = "";
+        while (lens1 > 0 && lens2 > 0) {
+            String s1Last = String.valueOf(chs1[lens1 - 1]);
+            String s2Last = String.valueOf(chs2[lens2 - 1]);
+
+            int s1v = Integer.parseInt(s1Last);
+            int s2v = Integer.parseInt(s2Last);
+
+            if (s1v < s2v) {
+
+                result += s1v + 10 - s2v;
+                String gaowei = String.valueOf(chs1[lens1 - 2]);
+                int gw = Integer.parseInt(gaowei) - 1;
+                chs1[lens1 - 2] = (char) gw;
+            } else {
+                result += s1v - s2v;
+            }
+            lens1--;
+            lens2--;
+        }
+
+        while (lens1 > 0 && chs1[0] != '0') {
+            result += chs1[lens1 - 1];
+            lens1--;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String s1 = "111";
+        String s2 = "12";
+        System.out.println(solution(s1, s2));
     }
 }

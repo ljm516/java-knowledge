@@ -28,18 +28,25 @@ public class ReverseKGroup_25 {
         ListNode end = dummy;
 
         while (end.next != null) {
+            // 将end指针指向要翻转的那个节点
             for (int i = 0; i < k && end != null; i++) {
                 end = end.next;
             }
             if (end == null) {
                 break;
             }
+            // 起始节点
             ListNode start = pre.next;
+            // 下一次开始翻转的节点
             ListNode next = end.next;
 
+            // 将要翻转的那个节点和它的下一个节点断开
             end.next = null;
+            // 进行翻转
             pre.next = reverse(start);
+            // 翻转后，起始几点成了尾结点，和下一次要开始翻转的节点相连
             start.next = next;
+
             pre = start;
 
             end = pre;

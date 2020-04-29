@@ -41,5 +41,7 @@ public class QuickSort {
         // 整个循环结束，l=r，将pivot的值放入该下标
         nums[l] = pivot;
         return l;
+
+
     }
 }

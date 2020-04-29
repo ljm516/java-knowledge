@@ -15,7 +15,7 @@ public class LongestIncreaseSubSequence_300 {
         if (n <= 1) {
             return n;
         }
-        int result = 0, maxEndingHere = 1;
+        int result, maxEndingHere = 1;
         for (int i = 1; i < n; i++) {
             result = solution(nums, i);
 

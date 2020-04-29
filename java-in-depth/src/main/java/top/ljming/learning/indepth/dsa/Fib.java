@@ -10,7 +10,7 @@ public class Fib {
     public static void main(String[] args) {
        // System.out.println(fib(5));
         //System.out.println(fib2(5));
-        System.out.println(func(100));
+        System.out.println(fib(5));
     }
 
     private static int fib(int n) {
@@ -61,6 +61,34 @@ public class Fib {
             last1 = result;
         }
         return result;
+    }
+
+    public int[] printNumbers(int n) {
+        if (n <= 0) {
+            return null;
+        }
+        int len = (int) (Math.pow(10, n) - 1);
+        int r[] = new int[len];
+        while (len > 0) {
+            r[len - 1] = len;
+            len--;
+        }
+        return r;
+    }
+
+    public int minArray(int[] numbers) {
+        if (null == numbers || numbers.length == 0) {
+            return -1;
+        }
+        int targetIdx = 0;
+        int len = numbers.length;
+        for (int i = 0; i < len - 1; i++) {
+            if (numbers[i] < numbers[i + 1]) {
+                targetIdx = i + 1;
+            }
+        }
+
+        return numbers[targetIdx];
     }
 
 }

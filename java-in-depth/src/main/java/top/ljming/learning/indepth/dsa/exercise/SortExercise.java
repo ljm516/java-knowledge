@@ -93,11 +93,8 @@ public class SortExercise {
 //        int mid =
     }
 
-    public void quickSort(int[] arr) {
 
-    }
-
-    public void headSort(int[] arr) {
+    public void heapSort(int[] arr) {
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o));
         for(int a : arr) {
             queue.offer(a);
@@ -113,7 +110,7 @@ public class SortExercise {
         int[] arr = new int[] {4, 5, 6, 3, 2, 1};
 
         SortExercise exercise = new SortExercise();
-        exercise.headSort(arr);
+        exercise.heapSort(arr);
 
         for (int a : arr) {
             System.out.print(a + ",");

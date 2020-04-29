@@ -2,7 +2,8 @@ package top.ljming.learning.indepth.dsa.exercise;
 
 import top.ljming.learning.indepth.dsa.domain.Tree;
 
-import java.util.LinkedList;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 二叉树的练习.
@@ -73,10 +74,114 @@ public class TreeExercise {
                 queue.offer(t.right);
             }
         }
+
+    }
+
+    // z形打印二叉树
+    public void zTraversal(Tree root) {
+        if (null == root) {
+            return;
+        }
+        Stack<Tree> oddStack = new Stack<>(); // 奇数栈
+        Stack<Tree> evenStack = new Stack<>(); // 偶数栈
+
+        int level = 1;
+        oddStack.push(root);
+
+        Tree curr;
+
+        while (!oddStack.isEmpty() || !evenStack.isEmpty()) {
+            if (level % 2 == 1) {
+                while (!oddStack.isEmpty()) {
+                    curr = oddStack.pop();
+                    System.out.println(curr.value);
+                    if (curr.left != null) {
+                        evenStack.push(curr.left);
+                    }
+                    if (curr.right != null) {
+                        evenStack.push(curr.right);
+                    }
+                }
+            } else {
+                while (!evenStack.empty()) {
+                    curr = evenStack.pop();
+                    System.out.println(curr.value);
+
+                    if (curr.right != null) {
+                        oddStack.push(curr.right);
+                    }
+                    if (curr.left != null) {
+                        evenStack.push(curr.left);
+                    }
+                }
+            }
+            level++;
+        }
+    }
+
+    public boolean isSymmetryTree(Tree root) {
+        if (null == root) {
+            return true;
+        }
+        List<Integer> list = new ArrayList<>();
+        specMidTraversal(root, list);
+        int lo = 0;
+        int hi = list.size() - 1;
+        while (lo <= hi) {
+            if (list.get(lo) != list.get(hi)) {
+                return false;
+            }
+            lo++;
+            hi--;
+        }
+        return true;
+    }
+
+    private void specMidTraversal(Tree root, List<Integer> list) {
+        if (null == root) {
+            list.add(0);
+        } else {
+            specMidTraversal(root.left, list);
+            list.add(root.value);
+            if (root.right != null) {
+                specMidTraversal(root.right, list);
+            }
+        }
+    }
+
+
+    // 求二叉树最远两节点距离
+    public int solution(Tree root) {
+        if (null == root) {
+            return 0;
+        }
+        int maxLeft = cal(root.left);
+        int maxRight = cal(root.right);
+
+        return maxLeft + maxRight;
+    }
+
+    public int cal(Tree root) {
+        if (null == root) {
+            return 0;
+        }
+
+
+        Map<Integer, Integer> map  = new ConcurrentHashMap<>();
+        return Math.max(cal(root.left), cal(root.right)) + 1;
     }
 
     public static void main(String[] args) {
         TreeExercise exercise = new TreeExercise();
+
+
+//        Tree l3 = new Tree(null, null, 3);
+//        Tree l4 = new Tree(null, null, 4);
+//
+//        Tree r3 = new Tree(null, null, 3);
+//        Tree r4 = new Tree(null, null, 4);
+//
+
         Tree one = new Tree(null, null, 1);
         Tree two = new Tree(null, null, 2);
         Tree tree = new Tree(one, two, 3);
@@ -84,12 +189,15 @@ public class TreeExercise {
 
         Tree root = new Tree(four, tree, 5);
 
-        exercise.frontTraversal(root);
-        System.out.println();
-        exercise.midTraversal(root);
-        System.out.println();
-        exercise.backTraversal(root);
-        System.out.println();
-        exercise.floorTraversal(root);
+        System.out.println(exercise.solution(root));
+
+//        System.out.println("前序遍历: ");
+//        exercise.frontTraversal(root);
+//        System.out.println("中序遍历: ");
+//        exercise.midTraversal(root);
+//        System.out.println("后序遍历: ");
+//        exercise.backTraversal(root);
+//        System.out.println("层序遍历: ");
+//        exercise.floorTraversal(root);
     }
 }
