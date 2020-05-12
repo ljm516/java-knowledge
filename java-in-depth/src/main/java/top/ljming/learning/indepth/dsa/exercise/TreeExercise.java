@@ -1,5 +1,6 @@
 package top.ljming.learning.indepth.dsa.exercise;
 
+
 import top.ljming.learning.indepth.dsa.domain.Tree;
 
 import java.util.*;
@@ -166,21 +167,12 @@ public class TreeExercise {
             return 0;
         }
 
-
-        Map<Integer, Integer> map  = new ConcurrentHashMap<>();
         return Math.max(cal(root.left), cal(root.right)) + 1;
     }
 
     public static void main(String[] args) {
         TreeExercise exercise = new TreeExercise();
 
-
-//        Tree l3 = new Tree(null, null, 3);
-//        Tree l4 = new Tree(null, null, 4);
-//
-//        Tree r3 = new Tree(null, null, 3);
-//        Tree r4 = new Tree(null, null, 4);
-//
 
         Tree one = new Tree(null, null, 1);
         Tree two = new Tree(null, null, 2);
@@ -189,15 +181,15 @@ public class TreeExercise {
 
         Tree root = new Tree(four, tree, 5);
 
-        System.out.println(exercise.solution(root));
+//        System.out.println(exercise.solution(root));
 
-//        System.out.println("前序遍历: ");
-//        exercise.frontTraversal(root);
-//        System.out.println("中序遍历: ");
-//        exercise.midTraversal(root);
-//        System.out.println("后序遍历: ");
-//        exercise.backTraversal(root);
-//        System.out.println("层序遍历: ");
-//        exercise.floorTraversal(root);
+        System.out.println("前序遍历: ");
+        exercise.frontTraversal(root);
+        System.out.println("中序遍历: ");
+        exercise.midTraversal(root);
+        System.out.println("后序遍历: ");
+        exercise.backTraversal(root);
+        System.out.println("层序遍历: ");
+        exercise.floorTraversal(root);
     }
 }
