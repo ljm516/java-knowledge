@@ -1,4 +1,4 @@
-package top.ljming.learning.indepth.dsa;
+package top.ljming.learning.indepth.dsa.sort;
 
 /**
  * 描述类的功能.

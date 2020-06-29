@@ -8,6 +8,7 @@ package top.ljming.leaning.indepth;
 
 import org.junit.Test;
 
+import java.text.DecimalFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -62,5 +63,14 @@ public class TestApplication {
     public void testa() {
         System.out.println("threadname: " + Thread.currentThread().getName());
         throw new RuntimeException();
+    }
+
+    @Test
+    public void testFormat() {
+        String sv = "3.0000000";
+        double v = Double.parseDouble(sv);
+
+        DecimalFormat format = new DecimalFormat("0.00");
+        System.out.println(format.format(v));
     }
 }

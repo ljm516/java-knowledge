@@ -16,4 +16,5 @@ public class BeanTest {
         ClassPathXmlApplicationContext cpxa = new ClassPathXmlApplicationContext("classpath:application-server.xml");
         Object o = cpxa.getBean("timediff");
     }
+
 }

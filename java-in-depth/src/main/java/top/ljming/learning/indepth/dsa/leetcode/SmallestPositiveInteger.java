@@ -1,6 +1,6 @@
 package top.ljming.learning.indepth.dsa.leetcode;
 
-import top.ljming.learning.indepth.dsa.BinarySearch;
+import top.ljming.learning.indepth.dsa.sort.BinarySearch;
 import top.ljming.learning.indepth.dsa.sort.InsertSort;
 
 /**

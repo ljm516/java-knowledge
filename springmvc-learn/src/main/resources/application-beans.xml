@@ -29,6 +29,7 @@
     <bean id="classA" class="top.ljming.springmvc.learn.spring.ioc.ClassA">
         <property name="classB" ref="classB"/>
     </bean>
+
     <bean id="classB" class="top.ljming.springmvc.learn.spring.ioc.ClassB">
         <property name="classC" ref="classC"/>
     </bean>

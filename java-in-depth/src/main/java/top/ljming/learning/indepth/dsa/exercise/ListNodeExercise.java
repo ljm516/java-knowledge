@@ -33,6 +33,20 @@ public class ListNodeExercise {
         return r;
     }
 
+    public ListNode reverse2(ListNode head) {
+        ListNode prev = null;
+        ListNode next;
+        ListNode curr = head;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
+    }
+
     /**
      * 检测链表是否有环.
      *
@@ -40,7 +54,16 @@ public class ListNodeExercise {
      * @return boolean
      */
     public boolean checkCircle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
 
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -121,6 +144,16 @@ public class ListNodeExercise {
         return head.val;
     }
 
+    public ListNode getMidNode2(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
     // 单链表的新增
     public void add(ListNode item) {
         if (head == null) {
@@ -175,15 +208,19 @@ public class ListNodeExercise {
         ListNodeExercise exercise = new ListNodeExercise();
 
         exercise.add(new ListNode(0));
-        exercise.add(new ListNode(1));
+
+        ListNode one = new ListNode(1);
+        exercise.add(one);
         exercise.add(new ListNode(2));
         exercise.add(new ListNode(3));
         exercise.add(new ListNode(4));
+        exercise.add(new ListNode(4));
 
-        int num = exercise.remove(2);
-        System.out.println(num);
+//        exercise.tail.next = one;
 
-        System.out.println(exercise.head.val);
+        boolean r = exercise.checkCircle(exercise.head);
+
+        System.out.println(r);
 
     }
 }
