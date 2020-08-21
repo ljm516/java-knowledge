@@ -1,5 +1,6 @@
 package top.ljming.springmvc.learn;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import top.ljming.springmvc.learn.mvc.service.StartService;

@@ -18,9 +18,7 @@ public class CyclicBarrierSample {
         for (int i = 0; i < nums; i++) {
             Thread thread = new Thread(new Task("task[" + i + "]", cyclicBarrier));
             thread.start();
-            if (i == 5) {
-                thread.interrupt();
-            }
+
         }
     }
 
