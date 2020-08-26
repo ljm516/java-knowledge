@@ -1,7 +1,7 @@
 package top.ljming.leaning.indepth.collection;
 
 import org.junit.Test;
-import top.ljming.learning.indepth.collection.ListClassInDeep;
+import top.ljming.javaindepth.collection.ListClassInDeep;
 
 import java.util.*;
 

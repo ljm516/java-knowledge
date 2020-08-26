@@ -1,7 +1,7 @@
 package top.ljming.leaning.indepth.spi;
 
 import org.junit.Test;
-import top.ljming.learning.indepth.spi.SPIDemoService;
+import top.ljming.javaindepth.spi.SPIDemoService;
 
 import java.util.ServiceLoader;
 
