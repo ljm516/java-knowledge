@@ -8,6 +8,7 @@ package top.ljming.javaindepth.designpatterns.geeklesson.proxy;
 public class UserController implements IUserController {
     @Override
     public void login(String phone, String pwd) {
+        long start = System.currentTimeMillis();
         System.out.println("phone: " + phone + "; pwd: " + pwd);
     }
 

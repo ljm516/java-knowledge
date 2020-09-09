@@ -2,7 +2,6 @@ package top.ljming.javaindepth.designpatterns.geeklesson.factory.method;
 
 import org.springframework.util.StringUtils;
 import top.ljming.javaindepth.designpatterns.geeklesson.factory.IRuleConfigParser;
-import top.ljming.learning.indepth.designpatterns.geeklesson.factory.*;
 
 import java.util.HashMap;
 import java.util.Map;

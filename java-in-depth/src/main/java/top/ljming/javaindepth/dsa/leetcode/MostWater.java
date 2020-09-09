@@ -25,8 +25,35 @@ public class MostWater {
         return maxWater;
     }
 
+    public int largestRectangleArea(int[] heights) {
+        if (heights == null || heights.length == 0) {
+            return 0;
+        }
+        if (heights.length == 1) {
+            return heights[0];
+        }
+        int pre = 0;
+        int next = 1;
+        int max = 0;
+        while (pre < heights.length - 1) {
+            if (heights[next] < heights[pre]) {
+                max = Math.max(max, (next - pre + 1) * Math.min(heights[pre], heights[next]));
+                pre++;
+            } else {
+                while (heights[next] >= heights[pre] && next < heights.length - 1) {
+                    next++;
+                }
+                max = Math.max(max, (next - pre + 1) * Math.min(heights[pre], heights[next]));
+                pre = next;
+            }
+            next++;
+
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         MostWater mostWater = new MostWater();
-        System.out.println(mostWater.func(new int[]{1, 2, 1}));
+        System.out.println(mostWater.largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3}));
     }
 }

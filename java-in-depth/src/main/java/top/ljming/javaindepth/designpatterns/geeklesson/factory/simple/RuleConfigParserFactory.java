@@ -1,7 +1,6 @@
 package top.ljming.javaindepth.designpatterns.geeklesson.factory.simple;
 
 import top.ljming.javaindepth.designpatterns.geeklesson.factory.*;
-import top.ljming.learning.indepth.designpatterns.geeklesson.factory.*;
 
 /**
  * 描述类的功能.

@@ -8,7 +8,11 @@ package top.ljming.leaning.indepth;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -72,5 +76,23 @@ public class TestApplication {
 
         DecimalFormat format = new DecimalFormat("0.00");
         System.out.println(format.format(v));
+    }
+
+    @Test
+    public void testDate() {
+        long current = System.currentTimeMillis();
+        long before365 = current - 86400 * 365 * 1000L;
+        System.out.println(new Date(before365));
+    }
+
+    @Test
+    public void testSortSet() {
+        SortedSet<BigDecimal> sortedRate = new TreeSet<>();
+        sortedRate.add(BigDecimal.valueOf(1));
+        sortedRate.add(BigDecimal.valueOf(5));
+        sortedRate.add(BigDecimal.valueOf(3));
+        sortedRate.add(BigDecimal.valueOf(6));
+
+        System.out.println(sortedRate.first() + ", " + sortedRate.last());
     }
 }

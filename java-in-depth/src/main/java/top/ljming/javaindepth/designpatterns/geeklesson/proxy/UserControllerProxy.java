@@ -12,7 +12,7 @@ import top.ljming.javaindepth.designpatterns.geeklesson.metic.RequestInfo;
 public class UserControllerProxy implements IUserController {
 
     private MetricCollector metricCollector;
-    private UserController userController;
+    private IUserController userController;
 
     public UserControllerProxy(UserController userController) {
         this.userController = userController;

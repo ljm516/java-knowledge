@@ -1,7 +1,13 @@
 package top.ljming.javaindepth.concurrent.share;
 
+import org.omg.PortableServer.THREAD_POLICY_ID;
+import sun.awt.windows.ThemeReader;
+import top.ljming.javaindepth.thread.ThreadPool;
+
+import javax.swing.plaf.TableHeaderUI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.*;
 
 /**
@@ -58,12 +64,16 @@ public class JUCShareApplication {
     public void sampleOfSemaphore() {
         Semaphore semaphore = new Semaphore(5);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-        for(int i = 0; i < 10; i++) {
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    Thread.sleep(2000);
-                    System.out.println("current: " + Thread.currentThread().getName() + ", e:" + System.currentTimeMillis());
+                    System.out.println("current: " + Thread.currentThread().getName() + "获取到一个许可，" + System.currentTimeMillis());
+                    long time = random.nextInt(10) * 1000;
+                    time = time == 0 ? 1000 : time;
+                    Thread.sleep(time);
+                    System.out.println("current: " + Thread.currentThread().getName() + ", sleep: " + time + ", e: " + System.currentTimeMillis()) ;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -140,7 +150,7 @@ public class JUCShareApplication {
             for (Future<String> future : specifiedFutureList) {
                 System.out.println("specified Result: " + future.get());
             }
-            for (Future<Integer> future: futureList) {
+            for (Future<Integer> future : futureList) {
                 System.out.println("with Result: " + future.get());
             }
         } catch (InterruptedException e) {
@@ -150,7 +160,7 @@ public class JUCShareApplication {
         }
     }
 
-    public void sampleOfFutureException () {
+    public void sampleOfFutureException() {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         Future<Integer> future = executorService.submit(() -> {
             System.out.println("this is Callable task");
@@ -217,6 +227,6 @@ public class JUCShareApplication {
 
     public static void main(String[] args) {
         JUCShareApplication share = new JUCShareApplication();
-        share.sampleOfInvokeAny();
+        share.sampleOfSemaphore();
     }
 }
