@@ -30,7 +30,6 @@ public class ConditionFactory implements IComponentFactory {
         } else {
             component = new SingleConditionService(condition);
         }
-        component.init();
         return component;
     }
 }

@@ -35,7 +35,6 @@ public class CounterFactory implements IComponentFactory {
         } else {
             counterService = new CountCounterService(counter);
         }
-        counterService.init();
         return counterService;
     }
 

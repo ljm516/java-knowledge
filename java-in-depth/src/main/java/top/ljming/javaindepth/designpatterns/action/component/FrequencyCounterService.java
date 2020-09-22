@@ -20,7 +20,8 @@ public class FrequencyCounterService extends CounterService {
 
     @Override
     public void doInit() {
-
+        // 执行init动作
+        this.getListener().initSuccess(ComponentType.COUNTER, this);
     }
 
 }

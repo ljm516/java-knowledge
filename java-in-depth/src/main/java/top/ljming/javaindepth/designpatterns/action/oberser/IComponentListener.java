@@ -8,7 +8,7 @@ import top.ljming.javaindepth.designpatterns.action.component.IComponent;
  *
  * @author ljming
  */
-public class ComponentListener {
+public interface IComponentListener {
 
-    public void initSuccess(ComponentType componentType, IComponent component);
+    void initSuccess(ComponentType componentType, IComponent component);
 }

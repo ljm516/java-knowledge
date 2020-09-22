@@ -25,7 +25,8 @@ public class SingleConditionService extends ConditionService {
     }
 
     @Override
-    public void init() {
-
+    public void doInit() {
+        // 执init动作
+        this.getListener().initSuccess(ComponentType.CONDITION, this);
     }
 }

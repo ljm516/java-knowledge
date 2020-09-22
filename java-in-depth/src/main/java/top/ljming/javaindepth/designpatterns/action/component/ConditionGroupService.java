@@ -1,5 +1,6 @@
 package top.ljming.javaindepth.designpatterns.action.component;
 
+import top.ljming.javaindepth.designpatterns.action.oberser.IComponentListener;
 import top.ljming.javaindepth.designpatterns.action.po.Condition;
 
 import java.util.ArrayList;
@@ -36,12 +37,13 @@ public class ConditionGroupService extends ConditionService implements IComponen
     }
 
     @Override
-    public void init() {
+    public void doInit() {
         List<Condition> subList = this.getCondition().getSubConditionList();
         for (Condition sub : subList) {
             ConditionService conditionService = new SingleConditionService(sub);
-            conditionService.init();
+            conditionService.doInit();
             subConditionServiceList.add(conditionService);
         }
+        this.getListener().initSuccess(ComponentType.CONDITION, this);
     }
 }
